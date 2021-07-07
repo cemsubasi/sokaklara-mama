@@ -1,0 +1,35 @@
+.spinnerBody {
+	height: 75px;
+	width: 75px;
+	background-image: URL("../images/paws.png");
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	animation-name: example;
+	animation-duration: 2s;
+	animation-delay: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	transition-property: background-image;
+	transition-duration: 1s;
+	transition-timing-function: linear;
+}
+
+.spinnerP {
+	margin: auto;
+	display: inline;
+}
+
+@keyframes example {
+	20% {
+		background-image: URL("../images/pet-food.png");
+	}
+	40% {
+		background-image: URL("../images/cat.png");
+	}
+	60% {
+		background-image: URL("../images/water-bowl.svg");
+	}
+	80% {
+		background-image: URL("../images/heart.png");
+	}
+}

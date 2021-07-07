@@ -1,0 +1,64 @@
+.container {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	/* align-items: stretch; */
+	align-items: center;
+	background-color: #e5f0ff;
+
+	background-position-y: bottom;
+	background-repeat: repeat-x;
+	background-image: url(../../images/bg_clouds.png);
+}
+
+.header {
+	width: 100vw;
+}
+
+.bottomHeader {
+	height: 2rem;
+	width: 100vw;
+	background-image: linear-gradient(white, #e5f0ff);
+}
+
+.mapSection {
+	display: flex;
+	align-items: stretch;
+	flex-grow: 1;
+	max-width: 80vw;
+	width: 80vw;
+	max-height: 80vh;
+}
+.mapGroup {
+	display: flex;
+	align-items: stretch;
+	flex-grow: 1;
+}
+
+.mapContainer {
+	width: 100%;
+}
+
+@media screen and (max-width: 992px) {
+	.container {
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+	}
+	.mapSection {
+		display: flex;
+		align-items: stretch;
+		flex-grow: 1;
+		width: 100vw;
+		max-width: 100vw;
+		max-height: 100vh;
+	}
+	.mapGroup {
+		max-width: 100vw;
+		flex-direction: column;
+	}
+	.mapContainer {
+		flex-grow: 1;
+	}
+}

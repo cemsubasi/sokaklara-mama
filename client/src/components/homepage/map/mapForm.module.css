@@ -1,0 +1,102 @@
+.form {
+	min-width: 20vw;
+	max-width: 22vw;
+	padding: 2rem 2rem;
+	margin-left: 2rem;
+	background-color: #f2f4f8;
+	box-shadow: -10px -10px 30px 0 #ffffff,
+		10px 10px 30px 0 rgba(174, 174, 192, 0.4);
+	border-radius: 8px;
+}
+
+.form h1 {
+	text-align: center;
+	font-family: "Dancing Script", cursive;
+	margin-bottom: 5rem;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.form p {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.formP {
+	padding-bottom: 2rem;
+}
+
+.form input {
+	border: rgb(221, 223, 226) solid 1px;
+	border-radius: 6px;
+	height: 2.5rem;
+	font-size: 1rem;
+	color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 1rem;
+	caret-color: rgba(0, 0, 0, 0.5);
+	padding: 0 0.5rem;
+}
+
+.form input:focus {
+	outline: rgb(221, 223, 226) solid 1px;
+}
+
+.buttonGroup {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2rem;
+}
+
+.buttonGroup button {
+	width: 10em;
+	height: 4em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	cursor: pointer;
+	border-radius: 9999px;
+	outline: none;
+	color: rgba(0, 0, 0, 0.5);
+	background-color: #f2f4f8;
+	border: 0px solid white;
+	box-shadow: inset -10px -10px 30px 0 #ffffff,
+		10px 10px 30px 0 rgba(174, 174, 192, 0.4);
+}
+.buttonGroup button:active {
+	box-shadow: inset 10px 10px 30px 0 rgba(174, 174, 192, 0.4),
+		-10px -10px 30px 0 #ffffff;
+}
+
+.buttonGroup img {
+	margin-right: 4px;
+	width: 30px;
+	height: 30px;
+}
+
+@media screen and (max-width: 992px) {
+	.form {
+		min-height: 20vh;
+		max-width: none;
+		margin: 0;
+		background-color: transparent;
+		width: 100%;
+	}
+	.formGroup {
+		max-width: 450px;
+		margin: auto;
+	}
+	.form p {
+		display: none;
+	}
+	.form h1 {
+		margin: 0 0 1rem 0;
+	}
+	.buttonGroup {
+		margin-top: 0;
+	}
+	.buttonGroup button {
+		box-shadow: inset -10px -10px 30px 0 #ffffff,
+			10px 10px 30px 0 rgba(174, 174, 192, 1);
+	}
+}
