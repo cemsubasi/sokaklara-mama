@@ -36,11 +36,14 @@ function LoginPage(props) {
 
 	return (
 		<div className={styles.container}>
-			<Header />
+			<div className={styles.header}>
+				<Header />
+			</div>
+			<div className={styles.bottomHeader}></div>
 			<div className={styles.formContainer}>
 				<form className={styles.form}>
 					<div className={styles.logo}>
-						<h1>Sokaklara Mama</h1>
+						<h1>Log In</h1>
 					</div>
 					<div className={styles.inputContainer}>
 						<div className={styles.inputGroup}>
@@ -52,7 +55,7 @@ function LoginPage(props) {
 							<input type="password" id="password" ref={passRef} />
 						</div>
 						<button type="submit" className={styles.btn} onClick={submit}>
-							submit
+							Confirm
 						</button>
 					</div>
 				</form>

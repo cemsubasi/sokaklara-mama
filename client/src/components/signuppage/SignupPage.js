@@ -32,11 +32,13 @@ function SignupPage() {
 	if (state) return <Redirect to="/login" />;
 	return (
 		<div className={styles.container}>
-			<Header />
+			<div className={styles.header}>
+				<Header />
+			</div>
 			<div className={styles.formContainer}>
 				<form className={styles.form}>
 					<div className={styles.logo}>
-						<h1>Sokaklara Mama</h1>
+						<h1>Sign Up</h1>
 					</div>
 					<div className={styles.inputContainer}>
 						<div className={styles.inputGroup}>
@@ -56,7 +58,7 @@ function SignupPage() {
 							className={styles.btn}
 							onClick={(e) => submit(e)}
 						>
-							submit
+							Confirm
 						</button>
 					</div>
 				</form>
