@@ -1,13 +1,19 @@
-import { useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 
 import { axi } from "../../utils/config";
 import Header from "../../common/Header";
 import styles from "./signup.module.css";
 
 function SignupPage() {
+	const [state, setState] = useState(false);
 	const nameRef = useRef("");
 	const passRef = useRef("");
 	const emailRef = useRef("");
+
+	useEffect(() => {
+		return () => setState(false);
+	}, []);
 
 	const submit = (e) => {
 		e.preventDefault();
@@ -17,9 +23,13 @@ function SignupPage() {
 			password: passRef.current.value,
 			email: emailRef.current.value,
 		})
-			.then(console.log)
+			.then((res) => {
+				if (res.status === "accepted") setState(true);
+			})
 			.catch(console.log);
 	};
+
+	if (state) return <Redirect to="/login" />;
 	return (
 		<div className={styles.container}>
 			<Header />

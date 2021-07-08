@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = new axios.create({
 	baseURL: "http://127.0.0.1:4004",
-	// baseURL: "https://street-animals-server.herokuapp.com",
+	// baseURL: "https://sokaklaramama.3hree1ne.com",
 });
 
 export const axi = (method, url, arg) => {
