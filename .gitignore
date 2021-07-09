@@ -18,8 +18,8 @@ server/node_modules/
 .env.development.local
 .env.test.local
 .env.production.local
-./client/src/utils/config.js
-./server/src/config.js
+client/src/utils/config.js
+server/src/config.js
 
 npm-debug.log*
 yarn-debug.log*
