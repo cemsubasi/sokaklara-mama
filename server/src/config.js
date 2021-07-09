@@ -13,7 +13,7 @@ const DB_Connect = mongoose
 	.then(() => console.log("DB Connected"))
 	.catch((err) => console.log("DB Connection Error", err));
 
-const PORT = process.env.PORT || 4004;
+const PORT = process.env.PORT || 4003;
 const SECRETKEY = "asdf1234**-";
 
 module.exports = { PORT, DB_Connect, SECRETKEY };
