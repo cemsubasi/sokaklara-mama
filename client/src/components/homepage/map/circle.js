@@ -18,7 +18,13 @@ function deleteWaterCircle(id, cityCircle) {
 		.catch(console.log);
 }
 
-export function addFoodCircle(map, cityList, user = " ", setFoodListOfCities) {
+export function addFoodCircle(
+	map,
+	cityList,
+	user = " ",
+	setFoodListOfCities,
+	setModalVisibility
+) {
 	cityList.forEach((each) => {
 		const cityFoodCircle = new window.google.maps.Circle({
 			strokeColor: user === each.email ? "purple" : "green",
@@ -48,6 +54,7 @@ export function addFoodCircle(map, cityList, user = " ", setFoodListOfCities) {
 					icon: xicon,
 				});
 				xmarker.addListener("click", () => {
+					setModalVisibility(true);
 					deleteFoodCircle(each.id, cityFoodCircle);
 					setFoodListOfCities(cityList.filter((e) => e.id !== each.id));
 					xmarker.setMap(null);
@@ -65,7 +72,8 @@ export function addWaterCircle(
 	map,
 	cityList,
 	user = " ",
-	setWaterListOfCities
+	setWaterListOfCities,
+	setModalVisibility
 ) {
 	cityList.forEach((each) => {
 		const cityWaterCircle = new window.google.maps.Circle({
@@ -96,6 +104,7 @@ export function addWaterCircle(
 					icon: xicon,
 				});
 				xmarker.addListener("click", () => {
+					setModalVisibility(true);
 					deleteWaterCircle(each.id, cityWaterCircle);
 					setWaterListOfCities(cityList.filter((e) => e.id !== each.id));
 					xmarker.setMap(null);

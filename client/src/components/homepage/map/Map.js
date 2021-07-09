@@ -45,13 +45,15 @@ function Map(props) {
 						map.current,
 						props.foodListOfCities,
 						props.user,
-						props.setFoodListOfCities
+						props.setFoodListOfCities,
+						props.setModalVisibility
 					);
 					addWaterCircle(
 						map.current,
 						props.waterListOfCities,
 						props.user,
-						props.setWaterListOfCities
+						props.setWaterListOfCities,
+						props.setModalVisibility
 					);
 					setLoaded(true);
 				})
@@ -82,7 +84,8 @@ function Map(props) {
 					map.current,
 					props.foodListOfCities,
 					props.user,
-					props.setFoodListOfCities
+					props.setFoodListOfCities,
+					props.setModalVisibility
 				);
 			}
 		},
@@ -96,7 +99,8 @@ function Map(props) {
 					map.current,
 					props.waterListOfCities,
 					props.user,
-					props.setWaterListOfCities
+					props.setWaterListOfCities,
+					props.setModalVisibility
 				);
 			}
 		},
