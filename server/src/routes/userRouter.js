@@ -87,7 +87,7 @@ router.route("/isLogin").post((req, res) => {
 				res.status(200).send({
 					status: "accepted",
 					info: "token verify accepted",
-					response: result,
+					response: { id: result.id, email: result.email },
 				});
 			})
 			.catch((err) => {
