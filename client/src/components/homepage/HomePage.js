@@ -1,8 +1,8 @@
-import { useState, useEffect, Fragment } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 
 import useLocationStates from "./useLocationStates";
-import { setInitLocationAct, setLocationStateAct } from "./homeActions";
+import { setInitLocation, setLocationState } from "./homeActions";
 import Header from "../../common/Header";
 import Modal from "../../common/Modal";
 import Map from "./map/Map";
@@ -11,23 +11,26 @@ import styles from "./home.module.css";
 
 function HomePage(props) {
 	const [initLocation, locationState] = useLocationStates();
-	useEffect(() => {
-		props.setInitLocationAct(initLocation);
-		props.setLocationStateAct(locationState);
-	}, [initLocation, locationState]);
+	useEffect(
+		() => {
+			props.setInitLocation(initLocation);
+			props.setLocationState(locationState);
+		},
+		//eslint-disable-next-line
+		[initLocation, locationState]
+	);
 
-	const [foodListOfCities, setFoodListOfCities] = useState([]);
-	const [waterListOfCities, setWaterListOfCities] = useState([]);
-	const [modalVisibility, setModalVisibility] = useState(false);
+	console.log(
+		"%cState",
+		"background-color: yellow; padding: 1rem; color: black; font-size: 1.4rem",
+		props.state
+	);
 
 	return (
-		<Fragment style={{ position: "relative" }}>
-			<Modal
-				modalVisibility={modalVisibility}
-				setModalVisibility={setModalVisibility}
-			/>
+		<>
+			<Modal />
 			<div
-				style={modalVisibility ? { filter: "blur(2px)" } : {}}
+				style={props.modalVisibility ? { filter: "blur(2px)" } : {}}
 				className={styles.container}
 			>
 				<div className={styles.header}>
@@ -37,40 +40,24 @@ function HomePage(props) {
 				<div className={styles.mapSection}>
 					<div className={styles.mapGroup}>
 						<div className={styles.mapContainer}>
-							<Map
-								initLocation={initLocation}
-								foodListOfCities={foodListOfCities}
-								waterListOfCities={waterListOfCities}
-								apiKey={process.env.REACT_APP_APIKEY}
-								setFoodListOfCities={setFoodListOfCities}
-								setWaterListOfCities={setWaterListOfCities}
-								locationState={locationState}
-								setModalVisibility={setModalVisibility}
-							/>
+							<Map apiKey={process.env.REACT_APP_APIKEY} />
 						</div>
-						{props.isLogin && (
-							<MapForm
-								locationState={locationState}
-								foodListOfCities={foodListOfCities}
-								setFoodListOfCities={setFoodListOfCities}
-								waterListOfCities={waterListOfCities}
-								setWaterListOfCities={setWaterListOfCities}
-							/>
-						)}
+						{props.isLogin && <MapForm />}
 					</div>
 				</div>
 			</div>
-		</Fragment>
+		</>
 	);
 }
 
 const mapStateToProps = (state) => {
 	return {
+		state: state,
 		isLogin: state.isLogin,
 	};
 };
 
 export default connect(mapStateToProps, {
-	setInitLocationAct,
-	setLocationStateAct,
+	setInitLocation,
+	setLocationState,
 })(HomePage);

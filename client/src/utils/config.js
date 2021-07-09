@@ -18,9 +18,12 @@ export const axi = (method, url, arg) => {
 export const initialState = {
 	isLogin: false,
 	user: "",
-	initLocation: {},
-	locationState: {},
+	initLocation: { lat: 0, lng: 0 },
+	locationState: { lat: 0, lng: 0 },
 	foodListOfCities: [],
 	waterListOfCities: [],
-	modalVisibility: false,
+	modal: {
+		visibility: false,
+		payload: { id: 0, cityCircle: {}, xmarker: {}, circleType: "" },
+	},
 };

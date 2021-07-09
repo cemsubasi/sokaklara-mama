@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 
 import { axi } from "../../../utils/config";
+import { setFoodListOfCities, setWaterListOfCities } from "./mapActions";
+import { setModal, setModalVisibility } from "../../../common/modalActions";
 import { addFoodCircle, addWaterCircle } from "./circle";
 import CenterButton from "./CenterButton";
 import Spinner from "../../../common/Spinner";
@@ -46,6 +48,7 @@ function Map(props) {
 						props.foodListOfCities,
 						props.user,
 						props.setFoodListOfCities,
+						props.setModal,
 						props.setModalVisibility
 					);
 					addWaterCircle(
@@ -53,6 +56,7 @@ function Map(props) {
 						props.waterListOfCities,
 						props.user,
 						props.setWaterListOfCities,
+						props.setModal,
 						props.setModalVisibility
 					);
 					setLoaded(true);
@@ -85,6 +89,7 @@ function Map(props) {
 					props.foodListOfCities,
 					props.user,
 					props.setFoodListOfCities,
+					props.setModal,
 					props.setModalVisibility
 				);
 			}
@@ -100,6 +105,7 @@ function Map(props) {
 					props.waterListOfCities,
 					props.user,
 					props.setWaterListOfCities,
+					props.setModal,
 					props.setModalVisibility
 				);
 			}
@@ -150,7 +156,17 @@ function Map(props) {
 const mapStateToProps = (state) => {
 	return {
 		user: state.user,
+		initLocation: state.initLocation,
+		locationState: state.locationState,
+		foodListOfCities: state.foodListOfCities,
+		waterListOfCities: state.waterListOfCities,
+		modalVisibility: state.modalVisibility,
 	};
 };
 
-export default connect(mapStateToProps)(Map);
+export default connect(mapStateToProps, {
+	setFoodListOfCities,
+	setWaterListOfCities,
+	setModal,
+	setModalVisibility,
+})(Map);

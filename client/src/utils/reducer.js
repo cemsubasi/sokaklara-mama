@@ -10,6 +10,26 @@ const reducer = (state = initialState, action) => {
 			return { ...state, initLocation: action.payload };
 		case "SET_LOCATION_STATE":
 			return { ...state, locationState: action.payload };
+		case "SET_FOOD_LIST_OF_CITIES":
+			return { ...state, foodListOfCities: action.payload };
+		case "SET_WATER_LIST_OF_CITIES":
+			return { ...state, waterListOfCities: action.payload };
+		case "SET_MODAL":
+			return {
+				...state,
+				modal: {
+					...state.modal,
+					payload: action.payload,
+				},
+			};
+		case "SET_MODAL_VISIBILITY":
+			return {
+				...state,
+				modal: {
+					...state.modal,
+					visibility: action.payload,
+				},
+			};
 		default:
 			return state;
 	}

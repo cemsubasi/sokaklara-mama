@@ -1,19 +1,12 @@
 import { axi } from "../../../utils/config";
 import xicon from "../../../images/xxx.png";
 
-function deleteFoodCircle(id, cityCircle) {
+export function deleteCircle(id, cityCircle, xmarker, circleType) {
 	const arg = { id: id };
-	return axi("delete", "/food", { data: arg })
+	return axi("delete", `/${circleType}`, { data: arg })
 		.then((res) => {
 			cityCircle.setMap(null);
-		})
-		.catch(console.log);
-}
-function deleteWaterCircle(id, cityCircle) {
-	const arg = { id: id };
-	return axi("delete", "/water", { data: arg })
-		.then((res) => {
-			cityCircle.setMap(null);
+			xmarker.setMap(null);
 		})
 		.catch(console.log);
 }
@@ -23,6 +16,7 @@ export function addFoodCircle(
 	cityList,
 	user = " ",
 	setFoodListOfCities,
+	setModal,
 	setModalVisibility
 ) {
 	cityList.forEach((each) => {
@@ -54,11 +48,13 @@ export function addFoodCircle(
 					icon: xicon,
 				});
 				xmarker.addListener("click", () => {
+					setModal({
+						id: each.id,
+						cityCircle: cityFoodCircle,
+						xmarker: xmarker,
+						circleType: "food",
+					});
 					setModalVisibility(true);
-					deleteFoodCircle(each.id, cityFoodCircle);
-					setFoodListOfCities(cityList.filter((e) => e.id !== each.id));
-					xmarker.setMap(null);
-					alert("Deleted");
 				});
 				map.addListener("dragstart", () => {
 					xmarker.setMap(null);
@@ -73,6 +69,7 @@ export function addWaterCircle(
 	cityList,
 	user = " ",
 	setWaterListOfCities,
+	setModal,
 	setModalVisibility
 ) {
 	cityList.forEach((each) => {
@@ -104,11 +101,13 @@ export function addWaterCircle(
 					icon: xicon,
 				});
 				xmarker.addListener("click", () => {
+					setModal({
+						id: each.id,
+						cityCircle: cityWaterCircle,
+						xmarker: xmarker,
+						circleType: "water",
+					});
 					setModalVisibility(true);
-					deleteWaterCircle(each.id, cityWaterCircle);
-					setWaterListOfCities(cityList.filter((e) => e.id !== each.id));
-					xmarker.setMap(null);
-					alert("Deleted");
 				});
 				map.addListener("dragstart", () => {
 					xmarker.setMap(null);

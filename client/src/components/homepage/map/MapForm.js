@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
+import { connect } from "react-redux";
 
+import { setFoodListOfCities, setWaterListOfCities } from "./mapActions";
 import styles from "./mapForm.module.css";
 import food from "../../../images/food-bowl.svg";
 import water from "../../../images/water-bowl.svg";
@@ -66,4 +68,15 @@ function MapForm({
 	);
 }
 
-export default MapForm;
+const mapStateToProps = (state) => {
+	return {
+		locationState: state.locationState,
+		foodListOfCities: state.foodListOfCities,
+		waterListOfCities: state.waterListOfCities,
+	};
+};
+
+export default connect(mapStateToProps, {
+	setFoodListOfCities,
+	setWaterListOfCities,
+})(MapForm);
