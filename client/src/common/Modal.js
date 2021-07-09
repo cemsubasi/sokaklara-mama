@@ -56,10 +56,13 @@ function Modal({
 						className={styles.petBowl}
 						alt=""
 					/>
-					<h3>Cancel {modalPayload.circleType} Circle</h3>
+					<h3>
+						Cancel {modalPayload.circleType === "food" ? "Food" : "Water"}{" "}
+						Circle
+					</h3>
 				</div>
 				<div className={styles.modalBody}>
-					<p>Do you want to cancel to circle?</p>
+					<p>Do you want to cancel the circle?</p>
 				</div>
 				<div className={styles.modalButtons}>
 					<div>
