@@ -3,8 +3,8 @@
 # dependencies
 client/node_modules/
 server/node_modules/
-client/src/utils/config
-server/src/config
+client/src/utils/config.js
+server/src/config.js
 client/.env
 
 /.pnp
