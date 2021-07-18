@@ -21,12 +21,19 @@ function Map(props) {
 	useEffect(
 		() => {
 			const loader = new Loader({
-				apiKey: props.apiKey || "AIzaSyDit4G0bMDP54KRwVqRTzvFtFGMNPRt_mo",
+				apiKey:
+					process.env.NODE_ENV === "production"
+						? props.apiKey
+						: "AIzaSyDit4G0bMDP54KRwVqRTzvFtFGMNPRt_mo",
 				version: "weekly",
 				libraries: ["places"],
 			});
 
-			if (!props.initLocation || props.initLocation.lat === 0) return;
+			if (
+				!props.initLocation ||
+				(props.initLocation.lat === 0 && props.initLocation.lng === 0)
+			)
+				return;
 
 			loader
 				.load()
@@ -75,7 +82,6 @@ function Map(props) {
 						.catch(console.log);
 				})
 				.catch(console.log);
-			// .catch(console.log);
 		},
 		//eslint-disable-next-line
 		[props.initLocation]
@@ -115,7 +121,10 @@ function Map(props) {
 	);
 
 	useEffect(() => {
-		if (markerRef.current) {
+		if (
+			markerRef.current &&
+			(props.locationState.lat !== 0 || props.locationState.lng !== 0)
+		) {
 			markerRef.current.setMap(null);
 			addMarker(markerRef, props.locationState, map.current);
 		}

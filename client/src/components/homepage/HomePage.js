@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 
-import useLocationStates from "./useLocationStates";
-import { setInitLocation, setLocationState } from "./homeActions";
 import Header from "../../common/Header";
 import Modal from "../../common/Modal";
 import Map from "./map/Map";
@@ -10,21 +8,37 @@ import MapForm from "./map/MapForm";
 import styles from "./home.module.css";
 
 function HomePage(props) {
-	const [initLocation, locationState] = useLocationStates();
+	/*
 	useEffect(
 		() => {
-			props.setInitLocation(initLocation);
-			props.setLocationState(locationState);
+			if (
+				navigator.userAgent.toLowerCase().includes("android") &&
+				navigator.userAgent.toLowerCase().includes("firefox")
+			)
+				props.setDimmer({
+					timeout: 1500,
+					visibility: true,
+					payload: {
+						type: "info",
+						message: {
+							head: "Warning!",
+							body:
+								"firefox mobile browser has a geolocation service issue, please use other browsers to avoid location issues",
+						},
+					},
+				});
 		},
 		//eslint-disable-next-line
-		[initLocation, locationState]
+		[]
 	);
 
-	console.log(
-		"%cState",
-		"background-color: yellow; padding: 1rem; color: black; font-size: 1.4rem",
-		props.state
-	);
+*/
+
+	// console.log(
+	// 	"%cState",
+	// 	"background-color: yellow; padding: 1rem; color: black; font-size: 1.4rem",
+	// 	props.state
+	// );
 
 	return (
 		<>
@@ -57,7 +71,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, {
-	setInitLocation,
-	setLocationState,
-})(HomePage);
+export default connect(mapStateToProps, {})(HomePage);
