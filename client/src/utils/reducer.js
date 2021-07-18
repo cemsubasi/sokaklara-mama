@@ -30,6 +30,17 @@ const reducer = (state = initialState, action) => {
 					visibility: action.payload,
 				},
 			};
+		case "SET_DIMMER":
+			return {
+				...state,
+				dimmer: {
+					...state.dimmer,
+					visibility: action.payload.visibility,
+					payload: action.payload.payload,
+					timeout: action.payload.timeout ?? 800,
+				},
+			};
+
 		default:
 			return state;
 	}

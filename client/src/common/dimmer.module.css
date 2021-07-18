@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100&display=swap");
+
+.background {
+	min-height: 100vh;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.85);
+	filter: blur(2px);
+	opacity: 1;
+}
+
+.modalContainer {
+	height: 100%;
+	width: 100%;
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	z-index: 2;
+	background-color: rgba(0, 0, 0, 0.85);
+	/* -webkit-animation-fill-mode: both; */
+	/* animation-fill-mode: both; */
+	/* -webkit-animation-duration: 0.5s; */
+	/* animation-duration: 0.5s; */
+	/* -webkit-transition: background-color 0.5s linear; */
+	/* transition: background-color 0.5s linear; */
+	/* -webkit-box-orient: vertical; */
+	/* -webkit-box-direction: normal; */
+	/* -ms-flex-direction: column; */
+	/* flex-direction: column; */
+	/* -webkit-box-align: center; */
+}
+
+.modalGroup {
+	height: 40vh;
+	width: 60vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: rgba(0, 0, 0, 0.5);
+	align-items: center;
+	justify-content: space-around;
+	background-color: transparent;
+	border-radius: 8px;
+	font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+	/* font-family: "Fuggles", cursive; */
+	font-size: 1.2em;
+	text-align: center;
+}
+
+.modalHead {
+	color: white;
+}
+
+.modalBody {
+	color: white;
+}
+
+.petBowl {
+	margin: auto;
+	height: 150px;
+	width: 150px;
+	display: block;
+}
+
+.modalGroup div {
+	flex-shrink: 200px;
+}
+
+.modalButtons {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-top: 2em;
+}
+
+.positive {
+	box-shadow: 0 0 0 2px #2ecc40 inset !important;
+	color: #2ecc40;
+	border-radius: 0.28571429rem;
+	line-height: 1em;
+	font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+	min-height: 1em;
+	outline: 0;
+	cursor: pointer;
+	font-weight: 400;
+	padding: 0.78571429em 2em 0.78571429em 2em;
+	border: none;
+	background-color: transparent;
+}
+
+.negative {
+	box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5) inset !important;
+	color: #fff !important;
+	border-radius: 0.28571429rem;
+	line-height: 1em;
+	font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+	min-height: 1em;
+	outline: 0;
+	cursor: pointer;
+	font-weight: 400;
+	padding: 0.78571429em 2em 0.78571429em 2em;
+	border: none;
+	background-color: transparent;
+	margin-left: 1em;
+}
+
+.positive:active {
+	box-shadow: 0 0 0 2px #2ecc40 inset !important;
+	color: #ff695e !important;
+}
+
+.positive:hover {
+	box-shadow: 0 0 0 2px #2ecc40 inset !important;
+	color: #fff;
+	background-color: #2ecc40;
+}
+
+.negative:active {
+	box-shadow: 0 0 0 2px #ff392b inset !important;
+	color: #ff695e !important;
+}
+.negative:hover {
+	box-shadow: 0 0 0 2px #ff392b inset !important;
+	color: #ff695e !important;
+}
