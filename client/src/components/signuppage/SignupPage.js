@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { axi } from "../../utils/config";
 import Header from "../../common/Header";
+import { setDimmer } from "../../common/dimmerActions";
 import styles from "./signup.module.css";
 
-function SignupPage() {
+function SignupPage(props) {
 	const [state, setState] = useState(false);
 	const nameRef = useRef("");
 	const passRef = useRef("");
@@ -24,7 +26,24 @@ function SignupPage() {
 			email: emailRef.current.value,
 		})
 			.then((res) => {
-				if (res.status === "accepted") setState(true);
+				if (res.status === "accepted") {
+					setState(true);
+					props.setDimmer({
+						visibility: true,
+						payload: {
+							type: "success",
+							message: { head: "Success!", body: res.info },
+						},
+					});
+				} else if (res.status === "rejected") {
+					props.setDimmer({
+						visibility: true,
+						payload: {
+							type: "error",
+							message: { head: "Reject!", body: res.info },
+						},
+					});
+				}
 			})
 			.catch(console.log);
 	};
@@ -67,4 +86,4 @@ function SignupPage() {
 	);
 }
 
-export default SignupPage;
+export default connect(null, { setDimmer })(SignupPage);

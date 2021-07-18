@@ -6,6 +6,7 @@ import { axi } from "../../utils/config";
 import Header from "../../common/Header";
 import styles from "./login.module.css";
 import { setLogin, setUser } from "./loginAction";
+import { setDimmer } from "../../common/dimmerActions";
 
 function LoginPage(props) {
 	const passRef = useRef("");
@@ -26,7 +27,21 @@ function LoginPage(props) {
 					props.setLogin(true);
 					localStorage.removeItem("token");
 					localStorage.setItem("token", res.response.token);
-					console.log(res.response.token);
+					return props.setDimmer({
+						visibility: true,
+						payload: {
+							type: "success",
+							message: { head: "Log in success", body: res.info },
+						},
+					});
+				} else if (res.status === "rejected") {
+					props.setDimmer({
+						visibility: true,
+						payload: {
+							type: "error",
+							message: { head: "User not found", body: res.info },
+						},
+					});
 				}
 			})
 			.catch(console.log);
@@ -70,4 +85,6 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, { setLogin, setUser })(LoginPage);
+export default connect(mapStateToProps, { setLogin, setUser, setDimmer })(
+	LoginPage
+);
