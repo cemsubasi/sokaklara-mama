@@ -28,7 +28,7 @@ export function addFoodCircle(
 			fillOpacity: 0.35,
 			map,
 			center: { lat: each.lat, lng: each.lng },
-			radius: 100,
+			radius: 50,
 		});
 		if (each.info) {
 			const infowindow = new window.google.maps.InfoWindow({
@@ -42,7 +42,7 @@ export function addFoodCircle(
 		if (each.email === user) {
 			cityFoodCircle.addListener("click", () => {
 				const xmarker = new window.google.maps.Marker({
-					position: { lat: each.lat + 0.00065, lng: each.lng + 0.00065 },
+					position: { lat: each.lat + 0.0000035, lng: each.lng + 0.0000035 },
 					map,
 					title: "undo circle",
 					icon: xicon,
@@ -81,7 +81,7 @@ export function addWaterCircle(
 			fillOpacity: 0.35,
 			map,
 			center: { lat: each.lat, lng: each.lng },
-			radius: 100,
+			radius: 50,
 		});
 		if (each.info) {
 			const infowindow = new window.google.maps.InfoWindow({
@@ -95,7 +95,7 @@ export function addWaterCircle(
 		if (each.email === user) {
 			cityWaterCircle.addListener("click", () => {
 				const xmarker = new window.google.maps.Marker({
-					position: { lat: each.lat + 0.00065, lng: each.lng + 0.00065 },
+					position: { lat: each.lat + 0.0000035, lng: each.lng + 0.0000035 },
 					map,
 					title: "undo circle",
 					icon: xicon,

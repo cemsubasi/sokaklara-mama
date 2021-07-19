@@ -38,7 +38,7 @@ router
 			}
 			console.log("token verify accepted");
 			Location.findOne({
-				lat: { $lt: req.body.lat + 0.00035, $gt: req.body.lat - 0.00035 },
+				lat: { $lt: req.body.lat + 0.0000035, $gt: req.body.lat - 0.0000035 },
 			})
 				.then((result) => {
 					if (result) {
