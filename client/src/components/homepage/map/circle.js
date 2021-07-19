@@ -42,7 +42,7 @@ export function addFoodCircle(
 		if (each.email === user) {
 			cityFoodCircle.addListener("click", () => {
 				const xmarker = new window.google.maps.Marker({
-					position: { lat: each.lat + 0.0000035, lng: each.lng + 0.0000035 },
+					position: { lat: each.lat + 0.00035, lng: each.lng + 0.00035 },
 					map,
 					title: "undo circle",
 					icon: xicon,
@@ -95,7 +95,7 @@ export function addWaterCircle(
 		if (each.email === user) {
 			cityWaterCircle.addListener("click", () => {
 				const xmarker = new window.google.maps.Marker({
-					position: { lat: each.lat + 0.0000035, lng: each.lng + 0.0000035 },
+					position: { lat: each.lat + 0.00035, lng: each.lng + 0.00035 },
 					map,
 					title: "undo circle",
 					icon: xicon,
