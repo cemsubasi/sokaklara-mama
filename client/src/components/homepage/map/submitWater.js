@@ -26,7 +26,7 @@ function submitWater({
 				type: "info",
 				message: {
 					head: "Cannot send request immediately",
-					body: "You have to wait 15s before to add more circle",
+					body: "You have to wait 15s before to add new circle",
 				},
 			},
 			timeout: 2000,

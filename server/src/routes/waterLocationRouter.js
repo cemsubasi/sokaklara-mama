@@ -8,18 +8,18 @@ router
 	.get((req, res) => {
 		Location.find()
 			.then((result) => {
-				console.log("location find success");
+				console.log("Location find success");
 				res.status(200).send({
 					status: "accepted",
-					info: "location find success",
+					info: "Location find success",
 					response: result,
 				});
 			})
 			.catch((err) => {
-				console.log("location find error");
+				console.log("Location find error");
 				res.status(200).send({
 					status: "error",
-					info: "location find error",
+					info: "Location find error",
 					response: [],
 					error: err,
 				});
@@ -28,24 +28,24 @@ router
 	.post((req, res) => {
 		jwt.verify(req.body.token, SECRETKEY, (err, decoded) => {
 			if (err) {
-				console.log("token verify error");
+				console.log("Token verify error");
 				return res.status(200).send({
 					status: "error",
-					info: "token verify error",
+					info: "Token verify error",
 					response: {},
 					error: err,
 				});
 			}
-			console.log("token verify accepted");
+			console.log("Token verify accepted");
 			Location.findOne({
 				lat: { $lt: req.body.lat + 0.0003, $gt: req.body.lat - 0.0003 },
 			})
 				.then((result) => {
 					if (result) {
-						console.log("there is already circle", result);
+						console.log("There is already circle", result);
 						return res.status(200).send({
 							status: "rejected",
-							info: "there is already a circle",
+							info: "There is already a circle",
 							response: result,
 						});
 					}
@@ -59,29 +59,29 @@ router
 					})
 						.save()
 						.then((result) => {
-							console.log("token verify accepted && location add success");
-							console.log("result", result);
+							console.log("Token verify accepted && location add success");
+							console.log("Result", result);
 							res.status(200).send({
 								status: "accepted",
-								info: "token verify accepted && location add success",
+								info: "Token verify accepted && location add success",
 								response: result,
 							});
 						})
 						.catch((err) => {
-							console.log("token verify accepted && location add error");
+							console.log("Token verify accepted && location add error");
 							res.status(200).send({
 								status: "rejected",
-								info: "token verify accepted && location add error",
+								info: "Token verify accepted && location add error",
 								response: {},
 								error: err,
 							});
 						});
 				})
 				.catch((err) => {
-					console.log("location findone error", err);
+					console.log("Location findone error", err);
 					res.status(200).send({
 						status: "error",
-						info: "location findone error",
+						info: "Location findone error",
 						response: {},
 						error: err,
 					});
@@ -91,18 +91,18 @@ router
 	.delete((req, res) => {
 		Location.findOneAndRemove({ id: req.body.id })
 			.then((result) => {
-				console.log("remove circle success");
+				console.log("The circle removed successfully");
 				res.status(200).send({
 					status: "accepted",
-					info: "remove circle success",
+					info: "The circle removed successfully",
 					response: { id: req.body.id },
 				});
 			})
 			.catch((err) => {
-				console.log("location find error");
+				console.log("Location find error");
 				res.status(200).send({
 					status: "error",
-					info: "location find error",
+					info: "Location find error",
 					response: { id: req.body.id },
 					error: err,
 				});

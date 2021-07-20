@@ -8,10 +8,10 @@ router.route("/isValid").post((req, res) => {
 	User.findOne({ email: req.body.email })
 		.then((result) => {
 			if (result) {
-				console.log("user already subscribed", result);
+				console.log("User already subscribed", result);
 				return res.status(200).send({
 					status: "rejected",
-					info: "user already subscribed",
+					info: "User already subscribed",
 					response: result,
 				});
 			}
@@ -23,15 +23,15 @@ router.route("/isValid").post((req, res) => {
 			})
 				.save()
 				.then((result) => {
-					console.log("user subscribed", result);
+					console.log("User subscribed", result);
 					res.status(200).send({
 						status: "accepted",
-						info: "user subscribed",
+						info: "User subscribed",
 						response: result,
 					});
 				})
 				.catch((err) => {
-					console.log("user subscription error", err);
+					console.log("User subscription error", err);
 					res.status(402).send(err);
 				});
 		})
@@ -48,24 +48,24 @@ router.route("/login").post((req, res) => {
 	User.findOne({ email: req.body.email, password: req.body.password }).then(
 		(result) => {
 			if (!result) {
-				console.log("email or password is invalid");
+				console.log("Email or password is invalid");
 				return res.status(200).send({
 					status: "rejected",
-					info: "email or password is invalid",
+					info: "Email or password is invalid",
 					response: result,
 				});
 			}
 			jwt.sign({ email: req.body.email }, SECRETKEY, (err, token) => {
 				if (err) {
-					console.log("jwt sign error", err);
+					console.log("JWT sign error", err);
 					return res
 						.status(200)
-						.send({ status: "error", info: "token sign error", response: err });
+						.send({ status: "error", info: "Token sign error", response: err });
 				}
 				console.log("login success");
 				res.status(200).send({
 					status: "accepted",
-					info: "login success",
+					info: "Login success",
 					response: { payload: result, token: token },
 				});
 			});
@@ -75,26 +75,26 @@ router.route("/login").post((req, res) => {
 router.route("/isLogin").post((req, res) => {
 	jwt.verify(req.body.token, SECRETKEY, (err, decoded) => {
 		if (err) {
-			console.log("token verify error");
+			console.log("Token verify error");
 			return res
 				.status(200)
-				.send({ status: "error", info: "token verify error", response: {} });
+				.send({ status: "error", info: "Token verify error", response: {} });
 		}
-		console.log("token verify accepted");
+		console.log("Token verify accepted");
 		User.findOne({ email: decoded.email })
 			.then((result) => {
-				console.log("token verify accepted && User findOne success");
+				console.log("Token verify accepted && User findOne success");
 				res.status(200).send({
 					status: "accepted",
-					info: "token verify accepted",
+					info: "Token verify accepted",
 					response: { id: result.id, email: result.email },
 				});
 			})
 			.catch((err) => {
-				console.log("token verify accepted && User findOne error");
+				console.log("Token verify accepted && User findOne error");
 				res.status(200).send({
 					status: "rejected",
-					info: "token verify accepted && User findOne error",
+					info: "Token verify accepted && User findOne error",
 					response: err,
 				});
 			});
