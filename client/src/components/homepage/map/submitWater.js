@@ -7,6 +7,7 @@ function submitWater({
 	ref,
 	setWaterListOfCities,
 	waterListOfCities,
+	setDimmer,
 }) {
 	setTimeout(() => {
 		setWaterTime(false);
@@ -18,7 +19,19 @@ function submitWater({
 		info: ref.current.value,
 		token: localStorage.getItem("token"),
 	};
-	if (waterTime) return alert("You cannot send request immediately");
+	if (waterTime)
+		return setDimmer({
+			visibility: true,
+			payload: {
+				type: "info",
+				message: {
+					head: "Cannot send request immediately",
+					body: "You have to wait 15s before to add more circle",
+				},
+			},
+			timeout: 2000,
+		});
+
 	setWaterTime(true);
 	return axi("post", "/water", arg)
 		.then((res) => {
@@ -26,7 +39,17 @@ function submitWater({
 				ref.current.value = "";
 				return setWaterListOfCities([...waterListOfCities, res.response]);
 			}
-			alert(res.info);
+			return setDimmer({
+				visibility: true,
+				payload: {
+					type: "info",
+					message: {
+						head: "The request is denied",
+						body: res.info,
+					},
+				},
+				timeout: 2000,
+			});
 		})
 		.catch((err) => console.log("submit error", err));
 }

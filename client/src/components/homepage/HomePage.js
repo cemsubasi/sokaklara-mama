@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { connect } from "react-redux";
 
 import Header from "../../common/Header";
@@ -9,36 +8,12 @@ import styles from "./home.module.css";
 
 function HomePage(props) {
 	/*
-	useEffect(
-		() => {
-			if (
-				navigator.userAgent.toLowerCase().includes("android") &&
-				navigator.userAgent.toLowerCase().includes("firefox")
-			)
-				props.setDimmer({
-					timeout: 1500,
-					visibility: true,
-					payload: {
-						type: "info",
-						message: {
-							head: "Warning!",
-							body:
-								"firefox mobile browser has a geolocation service issue, please use other browsers to avoid location issues",
-						},
-					},
-				});
-		},
-		//eslint-disable-next-line
-		[]
+	console.log(
+		"%cState",
+		"background-color: yellow; padding: 1rem; color: black; font-size: 1.4rem",
+		props.state
 	);
-
-*/
-
-	// console.log(
-	// 	"%cState",
-	// 	"background-color: yellow; padding: 1rem; color: black; font-size: 1.4rem",
-	// 	props.state
-	// );
+	*/
 
 	return (
 		<>

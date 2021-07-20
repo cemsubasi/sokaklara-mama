@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { connect } from "react-redux";
 
 import { setFoodListOfCities, setWaterListOfCities } from "./mapActions";
+import { setDimmer } from "../../../common/dimmerActions";
 import styles from "./mapForm.module.css";
 import food from "../../../images/food-bowl.svg";
 import water from "../../../images/water-bowl.svg";
@@ -10,10 +11,11 @@ import submitWater from "./submitWater";
 
 function MapForm({
 	locationState,
-	setFoodListOfCities,
 	foodListOfCities,
-	setWaterListOfCities,
 	waterListOfCities,
+	setFoodListOfCities,
+	setWaterListOfCities,
+	setDimmer,
 }) {
 	const [foodTime, setFoodTime] = useState(false);
 	const [waterTime, setWaterTime] = useState(false);
@@ -26,6 +28,7 @@ function MapForm({
 		ref,
 		setFoodListOfCities,
 		foodListOfCities,
+		setDimmer,
 	};
 	const submitWaterArgs = {
 		locationState,
@@ -34,6 +37,7 @@ function MapForm({
 		ref,
 		setWaterListOfCities,
 		waterListOfCities,
+		setDimmer,
 	};
 
 	return (
@@ -79,4 +83,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
 	setFoodListOfCities,
 	setWaterListOfCities,
+	setDimmer,
 })(MapForm);
